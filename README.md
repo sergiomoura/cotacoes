@@ -17,5 +17,8 @@ Observe que o arquivo index.js já possui uma constante chamada `cotacoes`.  Ela
 
 # Roadmap
 
- - [ ] **Escreva uma função **`exibirCotacaoPrincipal`**:** Essa função não deve receber parâmetros. Tudo que ela deve fazer é mostrar as informações da contante `cotacoes` exibi-la na parte da página destinada a exibir a cotação principal.
+ - [ ] **Escreva uma função **`exibirCotacaoPrincipal`**:**
+ Essa função não deve receber parâmetros. Tudo que ela deve fazer é mostrar as informações da contante `cotacoes` exibi-la na parte da página destinada a exibir a cotação principal.
 
+ - [ ] **Escreva uma função **`exibirOutrasCotacoes`**:**
+ Essa função não deve receber nenhum parâmetro. O que ela deve fazer é exibir para cada cotação o símbolo da moeda seu respectivo valor com exatamente quatro casas decimais. Você pode usar o método `.toFixed()` do objeto Number para fazer isso. [https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed)
