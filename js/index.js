@@ -27,4 +27,16 @@ const exibirCotacaoPrincipal = () => {
     
 }
 
+const exibirOutrasCotacoes = () => {
+    let str = '';
+    for (const moeda in cotacoes.rates) {
+        str += `<article>
+                    <h2>${moeda}</h2>
+                    <span>${cotacoes.rates[moeda].toFixed(4)}</span>
+                </article>`
+    }
+    document.getElementById('outrasCotacoes').innerHTML = str;
+}
+
 exibirCotacaoPrincipal();
+exibirOutrasCotacoes();
