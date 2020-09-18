@@ -17,5 +17,6 @@ Observe que o arquivo index.js já possui uma constante chamada `cotacoes`.  Ela
 
 # Roadmap
 
- - [ ] **Escreva uma função **`exibeCotacoes`**:** Essa função não deve receber parâmetros. Tudo que ela deve fazer é mostrar as informações da contante `cotacoes` exibi-las na página.
+ - [ ] **Escreva uma função **`exibeCotacoes`**:**
+ Essa função não deve receber parâmetros. Tudo que ela deve fazer é mostrar as informações da contante `cotacoes` exibi-las na página. Os valores das cotações devem ser exibidos sempre com quatro casas decimais.
 
