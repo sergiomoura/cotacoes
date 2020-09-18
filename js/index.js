@@ -1,7 +1,7 @@
 // Declarando o objeto com as cotações
-const cotacoes = {
+let cotacoes = {
     rates:{
-        CAD:1.5567,HKD:9.1428,ISK:162.2,PHP:57.167,
+        CAD:1.0000,HKD:9.1428,ISK:162.2,PHP:57.167,
         DKK:7.4396,HUF:361.16,CZK:26.747,AUD:1.6152,
         RON:4.86,SEK:10.408,IDR:17501.07,INR:86.861,
         BRL:6.2999,RUB:88.6075,HRK:7.5418,JPY:123.38,
@@ -38,5 +38,20 @@ const exibirOutrasCotacoes = () => {
     document.getElementById('outrasCotacoes').innerHTML = str;
 }
 
-exibirCotacaoPrincipal();
-exibirOutrasCotacoes();
+const carregaUltimasCotacoes = () =>{
+    const url = 'https://api.exchangeratesapi.io/latest';
+    
+    fetch(url,{
+        method:'GET'
+    }).then(
+        res => res.json()
+    ).then(
+        c => {
+            cotacoes=c;
+            exibirCotacaoPrincipal();
+            exibirOutrasCotacoes();
+        }
+    )
+}
+
+carregaUltimasCotacoes();
