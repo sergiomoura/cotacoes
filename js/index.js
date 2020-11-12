@@ -13,3 +13,30 @@ const cotacoes = {
     base:"EUR",
     date:"2020-09-17"
 }
+
+const carregaCotacoes = () =>{
+    let promise = fetch('https://api.exchangeratesapi.io/latest');
+    promise
+    .then((res)=>{return res.json()})
+    .then((objeto)=>{console.log(objeto)});
+}
+
+const carregaCotacoesAsyncAwait = async () => {
+    let response = await fetch('https://api.exchangeratesapi.io/latest');
+    let cotacoes = await response.json();
+    console.log(cotacoes);
+}
+
+function mostraCotacoes(cotacao){
+    let moeda = Object.keys(cotacao)[0];
+    let valor = Object.values(cotacao)[0];
+    
+    let article = document.createElement('article');
+    article.innerHTML = `
+        <h2>${moeda}</h2>
+        <span>${valor}</span>
+    `;
+    return article;
+}
+
+// carregaCotacoes();
