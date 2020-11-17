@@ -15,10 +15,20 @@ const cotacoes = {
 }
 
 const carregaCotacoes = async () => {
+    // Disparando a requisição para a api de cotações
     let response = await fetch('https://api.exchangeratesapi.io/latest');
+
+    // Interpretando a resposta como JSON
     let cotacoes = await response.json();
-    console.log(cotacoes);
+    
+    // Salvar cotacoes no localStorage
+    localStorage.setItem("cotacoes", JSON.stringify(cotacoes));
+
+    // Exibindo as cotações
     mostraCotacoes(cotacoes.rates);
+
+    // Debug...
+    console.log(cotacoes);
 }
 
 function mostraCotacoes(rates){
