@@ -15,11 +15,33 @@ const cotacoes = {
 }
 
 const carregaCotacoes = async () => {
+
+    // Tentando carregar cotações do localStorage
+    let cotacoes = localStorage.getItem("cotacoes");
+
+    // Se a cotacao existe
+    if(cotacoes != null){
+
+        // Transformando a string de cotações em um Obj Literal
+        cotacoes = JSON.parse(cotacoes);
+
+        // Se a cotacao é de hoje!
+        if( (new Date()).toISOString().substr(0,10) == cotacoes.date){
+
+            // Exibir a cotação
+            mostraCotacoes(cotacoes.rates);
+
+            // finalizar a minha função
+            return;
+
+        }
+    }
+
     // Disparando a requisição para a api de cotações
     let response = await fetch('https://api.exchangeratesapi.io/latest');
 
     // Interpretando a resposta como JSON
-    let cotacoes = await response.json();
+    cotacoes = await response.json();
     
     // Salvar cotacoes no localStorage
     localStorage.setItem("cotacoes", JSON.stringify(cotacoes));
@@ -48,4 +70,4 @@ function mostraCotacoes(rates){
     document.getElementById("outrasCotacoes").innerHTML = conteudo;
 }
 
-// carregaCotacoes();
+carregaCotacoes();
