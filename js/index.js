@@ -18,6 +18,7 @@ const carregaCotacoes = async () => {
     let response = await fetch('https://api.exchangeratesapi.io/latest');
     let cotacoes = await response.json();
     console.log(cotacoes);
+    mostraCotacoes(cotacoes.rates);
 }
 
 function mostraCotacoes(rates){
