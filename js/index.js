@@ -17,9 +17,28 @@ const cotacoes = {
 const URL = "https://api.exchangeratesapi.io";
 
 const getCotacoes = async () => {
-    let response = await fetch(`${URL}/latest`);
-    let cotacoes = await response.json();
+
+    // Antes de iniciar o diparo da requisição verificar se
+    // existe alguma coisa salva no localStorage sob a chave
+    // cotacoes.
+    let cotacoes = JSON.parse(localStorage.getItem("cotacoes"));
+    let hoje = (new Date()).toISOString().substr(0,10);
+    
+    // Alterar a condição abaixo para que o bloco só seja executado se:
+    // catacoes não existerem no localStorage
+    // OU
+    // data das cotacoes armazenadas forem diferentes da data de hoje
+
+    if(cotacoes == null){
+        let response = await fetch(`${URL}/latest`);
+        cotacoes = await response.json();
+    
+        // Salve as cotações no localStorage sob a chave "cotacoes";
+        localStorage.setItem("cotacoes", JSON.stringify(cotacoes));
+    } 
+
     mostrarCotacoes(cotacoes);
+
 }
 
 const mostrarCotacoes = (cotacoes) => {
@@ -28,9 +47,6 @@ const mostrarCotacoes = (cotacoes) => {
     let taxas = cotacoes.rates;
     let moedas = Object.keys(taxas);
     let valores = Object.values(taxas);
-
-    console.log(moedas);
-    console.log(valores);
 
     let str = '';
     for (let i = 0; i < moedas.length; i++) {
